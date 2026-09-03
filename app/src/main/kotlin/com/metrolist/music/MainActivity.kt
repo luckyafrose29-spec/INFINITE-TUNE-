@@ -660,6 +660,10 @@ class MainActivity : FragmentActivity() {
             pureBlack = pureBlack,
             themeColor = themeColor,
         ) {
+            FirstRunPermissionGate()
+            
+            
+            
             val currentDensity = LocalDensity.current
             val windowInfo = LocalWindowInfo.current
             val containerSize = windowInfo.containerDpSize
