@@ -1,0 +1,21 @@
+# Optional: use this to test the server locally (e.g. with Docker Desktop)
+# before deploying it to Hugging Face Spaces.
+#
+#   docker compose up --build
+#
+# Locally you can map the real Minecraft port directly, so playit.gg is only
+# strictly required once this is deployed on Hugging Face Spaces.
+services:
+  minecraft:
+    build: .
+    container_name: infinite-tune-minecraft
+    restart: unless-stopped
+    ports:
+      - "25565:25565"   # direct connection for local testing
+      - "7860:7860"     # status page (mirrors the Hugging Face Space port)
+    environment:
+      PLAYIT_SECRET_KEY: ""   # optional locally; required on Hugging Face
+    volumes:
+      - ./data:/data
+    stdin_open: true
+    tty: true
